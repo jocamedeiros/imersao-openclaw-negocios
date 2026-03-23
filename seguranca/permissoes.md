@@ -85,12 +85,22 @@ O sistema tem duas camadas de permissão:
 
 ### Qual agente acessa o quê
 
-| Agente | Mentes de referência | Acesso ao cérebro |
-|--------|---------------------|-------------------|
-| Agente Geral | Generalista | `empresa/` + todas as `areas/` + `dados/` + `seguranca/` |
-| Agente de Vendas | Hormozi, Belfort, Ziglar | `empresa/` + `areas/vendas/` + `dados/vendas.csv` + `dados/leads.csv` |
-| Agente de Marketing | Brunson, Hormozi, Halbert, Schwartz | `empresa/` + `areas/marketing/` |
-| Agente de Atendimento | Hsieh (Zappos), Hyken, Disney | `empresa/` + `areas/atendimento/` |
+#### Agentes internos (falam com o time)
+
+| Agente | Mentes de referência | Acesso ao cérebro | Canal |
+|--------|---------------------|-------------------|-------|
+| Agente Geral | Generalista | `empresa/` + todas as `areas/` + `dados/` + `seguranca/` | Telegram (tópicos internos) |
+| Agente de Vendas | Hormozi, Belfort, Ziglar | `empresa/` + `areas/vendas/` + `dados/` | Telegram (💰 Vendas) |
+| Agente de Marketing | Brunson, Hormozi, Halbert, Schwartz | `empresa/` + `areas/marketing/` | Telegram (📢 Marketing) |
+| Agente de Atendimento | Hsieh (Zappos), Hyken, Disney | `empresa/` + `areas/atendimento/` | Telegram (🎧 Atendimento) |
+
+#### Agentes externos (falam com clientes)
+
+| Agente | Mentes de referência | Acesso ao cérebro | Canal |
+|--------|---------------------|-------------------|-------|
+| Bot Leads | Chet Holmes, Chris Voss, Ziglar | `empresa/contexto/` + `areas/vendas/skills/` + `dados/leads.csv` (write) | WhatsApp |
+
+> ⚠️ **Bot Leads tem acesso MÍNIMO.** Não vê métricas, decisões, learnings, marketing, ou atendimento interno. Só sabe o necessário pra atender o lead: produtos, preços e processo de qualificação.
 
 ### Por que o Assistente Geral tem acesso total?
 
@@ -118,6 +128,8 @@ Se um agente de área precisa de informação de outra área, ele pede ao Assist
 
 ## Matriz Completa: Pessoa × Agente × Área
 
+### Agentes internos (time)
+
 | Pessoa | Agente Geral | Ag. Vendas | Ag. Marketing | Ag. Atendimento |
 |--------|:---:|:---:|:---:|:---:|
 | Ricardo (Fundador) | ✅ | ✅ | ✅ | ✅ |
@@ -127,6 +139,14 @@ Se um agente de área precisa de informação de outra área, ele pede ao Assist
 | Juliana (Suporte) | ✅ | ✅ | ❌ | ✅ |
 | Lucas (Tráfego) | ❌ | ❌ | ✅ | ❌ |
 | Marcos (Design) | ❌ | ❌ | ✅ | ❌ |
+
+### Agente externo (Bot Leads)
+
+| Quem fala | Acesso |
+|-----------|--------|
+| Qualquer lead (WhatsApp) | Bot Leads |
+
+O Bot Leads é **aberto** (`allowFrom: *`) — qualquer pessoa que mande mensagem no WhatsApp da empresa é atendida. Não há restrição de quem pode falar, porque o público é externo.
 
 ---
 

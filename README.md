@@ -42,9 +42,12 @@ empresa-exemplo-second-brain/
 │   ├── marketing/                     ← Agente de Marketing
 │   │   ├── SOUL.md                    ← Mentes: Brunson, Hormozi, Halbert
 │   │   └── AGENTS.md                 ← Escopo: empresa/ + marketing/
-│   └── atendimento/                   ← Agente de Atendimento
-│       ├── SOUL.md                    ← Mentes: Hsieh (Zappos), Hyken
-│       └── AGENTS.md                 ← Escopo: empresa/ + atendimento/
+│   ├── atendimento/                   ← Agente de Atendimento
+│   │   ├── SOUL.md                    ← Mentes: Hsieh (Zappos), Hyken
+│   │   └── AGENTS.md                 ← Escopo: empresa/ + atendimento/
+│   └── bot-leads/                     ← Bot externo (WhatsApp)
+│       ├── SOUL.md                    ← Mentes: Chet Holmes, Chris Voss
+│       └── AGENTS.md                 ← Escopo mínimo: produtos + qualificação
 │
 ├── empresa/                           ← Contexto geral (cross-area)
 │   ├── contexto/
@@ -146,6 +149,8 @@ Toda **área** sempre tem 3 pastas base:
 
 ## Agentes
 
+### Agentes internos (falam com o time via Telegram)
+
 | Agente | Mentes de Referência | Área | Tópico Telegram |
 |--------|---------------------|------|-----------------|
 | Agente Geral | Generalista | Todas | General + todos |
@@ -153,7 +158,15 @@ Toda **área** sempre tem 3 pastas base:
 | Agente de Marketing | Brunson, Hormozi, Halbert, Schwartz | Marketing | 📢 Marketing |
 | Agente de Atendimento | Hsieh (Zappos), Hyken, Disney | Atendimento | 🎧 Atendimento |
 
-Cada agente tem nome funcional ("Agente de Vendas") + mentes de especialistas no SOUL.md que moldam como ele raciocina. Ver `agentes/[área]/SOUL.md` para detalhes.
+### Agente externo (fala com clientes via WhatsApp)
+
+| Agente | Mentes de Referência | Canal | Objetivo |
+|--------|---------------------|-------|----------|
+| Bot Leads | Chet Holmes, Chris Voss, Ziglar | WhatsApp | Qualificar leads + agendar calls |
+
+O Bot Leads é **100% independente** — não participa de tópicos, não gera relatórios, não fala com o time. Quando qualifica um lead, registra no CRM e notifica o Agente de Vendas (que avisa o time).
+
+Cada agente tem nome funcional + mentes de especialistas no SOUL.md que moldam como ele raciocina. Ver `agentes/[área]/SOUL.md` para detalhes.
 
 Ver permissionamento completo (pessoas + agentes + cenários) em `seguranca/permissoes.md`.
 
