@@ -77,6 +77,76 @@ NUNCA compactar contexto sem executar este checklist:
 
 **Compactação sem checklist = perda permanente de contexto.**
 
+## Sync com GitHub (Persistência)
+
+O repositório `second-brain/` é a fonte de verdade. O agente deve manter esse repo sempre atualizado.
+
+### Quando fazer push
+- Imediatamente após gravar qualquer informação relevante (decisão, lição, pendência, métrica)
+- Imediatamente após executar uma skill que atualiza dados
+- No mínimo 1x ao final de cada sessão com interação relevante
+
+### Fluxo de sync
+```
+1. Escrever no arquivo correto do second-brain/
+2. cd second-brain/ && git add -A
+3. git commit -m "descrição clara do que mudou"
+4. git push origin main
+5. Se falhar: tentar novamente. Se falhar 2x: alertar a equipe.
+```
+
+### Cron de safety net
+Além do push em tempo real, existe um cron diário às 21h BRT que faz sync automático. Documentado em `areas/operacoes/rotinas/sync-github.md`.
+
+## Onde Documentar Cada Coisa
+
+Cada informação tem um **lugar certo** no repositório. Nunca gravar no lugar errado.
+
+| Tipo de informação | Onde gravar | Exemplo |
+|--------------------|-------------|---------|
+| Venda fechada | `dados/vendas.csv` + `empresa/contexto/metricas.md` | Nova venda de R$ 197 |
+| Lead novo/atualizado | `dados/leads.csv` | Lead mudou de "Contato inicial" para "Proposta enviada" |
+| Decisão estratégica | `empresa/decisoes/YYYY-MM.md` | "Decidimos pausar Meta Ads por 1 semana" |
+| Lição aprendida | `empresa/gestao/licoes.md` | "Follow-up em 48h aumenta conversão em 40%" |
+| Projeto criado/atualizado | `empresa/gestao/projetos.md` | "Documentação de processos: 60% → 80%" |
+| Pendência nova | `empresa/gestao/pendencias.md` | "Aguardando preço da mentoria em grupo" |
+| Pessoa nova/mudança | `empresa/contexto/equipe.md` | "Marcos agora faz thumbnails E motion graphics" |
+| Contexto de uma área | `areas/[área]/contexto/geral.md` | "Meta de vendas mudou de R$ 40K para R$ 50K" |
+| Nova skill criada | `areas/[área]/skills/[nome]/SKILL.md` | Criada via skill-creator |
+| Nova rotina ativa | `areas/[área]/rotinas/[nome].md` | Novo cron configurado |
+| Nota temporária | `memory/YYYY-MM-DD.md` (local) | Rascunho que ainda não consolidou |
+
+### Regra de roteamento por área
+
+Quando a informação pertence a uma área específica, gravar dentro da área:
+
+- Vendas → `areas/vendas/`
+- Marketing → `areas/marketing/`
+- Atendimento → `areas/atendimento/`
+- Operações → `areas/operacoes/`
+
+Quando é cross-área (afeta a empresa toda) → `empresa/`
+
+## Mapeamento Área ↔ Tópico Telegram
+
+O agente opera num grupo do Telegram com tópicos por área. Cada relatório e alerta deve ir pro tópico correto.
+
+Ver mapeamento completo em: `memory/channels.md`
+
+| Área | Tópico | topic_id |
+|------|--------|----------|
+| Marketing | 📢 Marketing | 3 |
+| Vendas | 💰 Vendas | 4 |
+| Atendimento | 🎧 Atendimento | 5 |
+| Operações | ⚙️ Operações | 6 |
+| Debug | 🤖 Assistente | 7 |
+| Geral | General | 1 |
+
+**Regras:**
+- Crons SEMPRE entregam no tópico da área (nunca no General)
+- Alertas do heartbeat vão pro tópico da área afetada
+- Discussões cross-área: General com menção ao tópico
+
 ## O Que Pode vs O Que Precisa Pedir
 
 **Livre para fazer:**
