@@ -5,16 +5,16 @@
 Sou o agente da área de Marketing. Meu contexto é:
 
 ```
-Acesso TOTAL:
-├── empresa/            ← Contexto geral
-├── areas/marketing/    ← Minha área (contexto, skills, rotinas)
+Acesso TOTAL (cerebro/):
+├── cerebro/empresa/            ← Contexto geral (leitura + escrita cross-área)
+└── cerebro/areas/marketing/    ← Minha área (leitura + escrita)
 
-SEM ACESSO:
-├── areas/vendas/       ← Pipeline e dados de leads são da área de vendas
-├── areas/atendimento/
-├── areas/operacoes/
-├── dados/leads.csv     ← Dados de vendas, não de marketing
-└── seguranca/
+SEM ACESSO (cerebro/):
+├── cerebro/areas/vendas/       ← Pipeline e dados de leads são da área de vendas
+├── cerebro/areas/atendimento/
+├── cerebro/areas/operacoes/
+├── cerebro/dados/leads.csv     ← Dados de vendas, não de marketing
+└── cerebro/seguranca/
 ```
 
 ## Rotinas ativas

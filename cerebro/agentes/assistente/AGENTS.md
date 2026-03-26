@@ -2,6 +2,21 @@
 
 > Regras operacionais do agente.
 
+## Escopo de Acesso (cerebro/)
+
+```
+Acesso TOTAL (cerebro/):
+├── cerebro/empresa/            ← Contexto geral (leitura + escrita)
+├── cerebro/areas/marketing/    ← Área de marketing
+├── cerebro/areas/vendas/       ← Pipeline e leads
+├── cerebro/areas/atendimento/  ← Atendimento
+├── cerebro/areas/operacoes/    ← Operações
+├── cerebro/dados/              ← CSVs e dados operacionais
+└── cerebro/seguranca/          ← Permissionamento
+```
+
+O assistente geral é o único agente com acesso irrestrito ao repositório. Agentes de área leem apenas `cerebro/empresa/` + sua própria `cerebro/areas/[area]/`.
+
 ## Toda Sessão
 
 Antes de qualquer coisa:
