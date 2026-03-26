@@ -11,9 +11,10 @@
 |--------|----------|--------------------|-----|
 | General | 1 | Assistente Geral | @agente_geral_imersao_bot |
 | ⚙️ Operações | 29 | Assistente Geral | @agente_geral_imersao_bot |
-| 📢 Marketing | 8 | Beatriz Almeida | @agente_marketing_imersao_bot |
 
-**Regra:** Cada agente só responde nos tópicos mapeados para ele. Mensagem em tópico não mapeado = ignora silenciosamente (agentId: none).
+> **Nota:** O agente de marketing foi removido do grupo em 2026-03-26. Apenas o Assistente Geral opera neste grupo.
+
+**Regra:** Cada agente só responde nos tópicos mapeados para ele. Mensagem em tópico não mapeado = ignora silenciosamente (`groupPolicy: disabled`).
 
 ---
 
@@ -53,7 +54,7 @@
 
 ```
 account: assistente → topics: 1=assistente, 8=disabled, 29=assistente
-account: marketing  → topics: 1=disabled, 8=marketing, 29=disabled
+account: marketing  → sem grupos configurados (bot removido do grupo)
 ```
 
 ---
