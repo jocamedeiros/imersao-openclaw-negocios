@@ -6,28 +6,27 @@
 empresa/
 ├── MAPA.md
 ├── contexto/
-│   ├── empresa.md
-│   ├── equipe.md
-│   └── metricas.md
-├── decisoes/
-│   ├── COMO-REGISTRAR.md
-│   └── 2026-03.md
-├── gestao/
-│   ├── projetos.md
-│   ├── pendencias.md
-│   └── licoes.md
+│   ├── geral.md          ← Quem é a empresa, missão, produtos
+│   ├── people.md          ← Equipe, cargos, estrutura de decisão
+│   ├── metricas.md        ← KPIs e números atuais
+│   ├── decisions.md       ← Decisões estratégicas registradas
+│   └── lessons.md         ← Lições aprendidas
+├── rotinas/
 ├── skills/
-│   └── _index.md
-└── rotinas/
-    └── README.md
+└── projetos/
+    ├── README.md          ← Projetos ativos e concluídos
+    └── pendencias.md      ← Pendências abertas
 ```
 
 ## O que tem em cada lugar
 
 | Caminho | O que o agente encontra |
 |---------|------------------------|
-| `contexto/` | Quem é a empresa, equipe e métricas atuais |
-| `decisoes/` | Registro de decisões estratégicas por mês |
-| `gestao/` | Projetos em andamento, pendências e lições aprendidas |
-| `skills/` | Skills cross-area (ver `_index.md` dentro da pasta) |
-| `rotinas/` | Como crons funcionam |
+| `contexto/geral.md` | Missão, produtos, canais, modelo de negócio |
+| `contexto/people.md` | Quem trabalha aqui, papéis e estrutura de decisão |
+| `contexto/metricas.md` | MRR, clientes, CAC, ROAS — números atuais |
+| `contexto/decisions.md` | Decisões estratégicas com contexto e status |
+| `contexto/lessons.md` | Lições aprendidas com erros e acertos |
+| `rotinas/` | Rotinas automáticas (crons) |
+| `skills/` | Skills cross-área (ver `_index.md`) |
+| `projetos/` | Projetos em andamento e concluídos |

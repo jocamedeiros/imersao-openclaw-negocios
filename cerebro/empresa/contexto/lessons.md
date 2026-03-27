@@ -1,4 +1,8 @@
-# Lições Aprendidas — Empresa Exemplo
+# Lições Aprendidas — Empresa
+
+> O que aprendemos com erros e acertos. Cada lição gera uma ação concreta.
+
+---
 
 ## Março 2026
 
@@ -14,4 +18,4 @@
 
 ---
 
-*Atualizado: março 2026*
+_Atualizado: março 2026_
