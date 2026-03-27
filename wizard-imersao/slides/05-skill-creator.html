@@ -15,124 +15,88 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 100%; height: 100%; background: var(--bg); font-family: 'Inter', system-ui, sans-serif; color: var(--text); overflow: hidden; }
-  body { display: flex; flex-direction: column; align-items: center; padding: 22px 28px 18px; }
+  body { display: flex; flex-direction: column; align-items: center; padding: 20px 28px 16px; }
 
   /* ─── HEADER ─── */
-  .header { text-align: center; margin-bottom: 16px; }
+  .header { text-align: center; margin-bottom: 14px; }
   .badge {
     display: inline-flex; align-items: center; gap: 6px;
     background: rgba(254,80,0,0.12); border: 1px solid rgba(254,80,0,0.35);
     border-radius: 999px; padding: 4px 14px;
     font-size: 11px; font-weight: 700; color: var(--accent2);
-    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px;
+    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px;
   }
   h1 {
-    font-size: clamp(24px, 2.8vw, 36px); font-weight: 900;
+    font-size: clamp(22px, 2.6vw, 32px); font-weight: 900;
     background: linear-gradient(135deg, #fff 30%, var(--accent2) 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text; line-height: 1.15; margin-bottom: 4px;
   }
-  .subtitle { color: var(--text2); font-size: 14px; font-weight: 500; }
-
-  /* ─── KPIs ─── */
-  .kpis { display: flex; gap: 12px; margin-bottom: 16px; }
-  .kpi {
-    background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
-    padding: 10px 22px; text-align: center; flex: 1;
-  }
-  .kpi-val { font-size: 22px; font-weight: 800; color: var(--accent2); line-height: 1.2; }
-  .kpi-lbl { font-size: 11px; color: var(--text2); font-weight: 500; margin-top: 2px; }
+  .subtitle { color: var(--text2); font-size: 13px; font-weight: 500; }
 
   /* ─── MAIN GRID ─── */
-  .main { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; max-width: 1100px; flex: 1; min-height: 0; }
+  .main { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; max-width: 1120px; flex: 1; min-height: 0; }
 
-  /* ─── LEFT: CONCEITO + COMPARAÇÃO ─── */
+  /* ─── LEFT COLUMN ─── */
   .left { display: flex; flex-direction: column; gap: 12px; }
 
-  .concept-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .concept-card {
-    border-radius: 14px; padding: 14px 16px;
-    position: relative; overflow: hidden;
-  }
-  .concept-card::before {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  }
+  /* ─── PROBLEM vs SOLUTION ─── */
+  .vs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .vs-card { border-radius: 14px; padding: 14px 16px; position: relative; overflow: hidden; }
+  .vs-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
   .card-bad { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); }
   .card-bad::before { background: var(--red); }
   .card-good { background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2); }
   .card-good::before { background: var(--green); }
-  .card-tag {
+  .vs-tag {
     display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px;
   }
   .tag-red { background: rgba(239,68,68,0.15); color: var(--red); }
   .tag-green { background: rgba(34,197,94,0.15); color: var(--green); }
-  .card-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .card-list { list-style: none; font-size: 12px; color: var(--text2); line-height: 1.7; }
-  .card-list li { display: flex; align-items: center; gap: 6px; }
-  .card-list li .x { color: var(--red); font-weight: 700; font-size: 11px; }
-  .card-list li .v { color: var(--green); font-weight: 700; font-size: 11px; }
+  .vs-title { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+  .vs-list { list-style: none; font-size: 11.5px; color: var(--text2); line-height: 1.7; }
+  .vs-list li { display: flex; align-items: center; gap: 6px; }
+  .vs-list li .x { color: var(--red); font-weight: 700; font-size: 10px; }
+  .vs-list li .v { color: var(--green); font-weight: 700; font-size: 10px; }
 
-  /* ─── PATHS ─── */
-  .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: 1; }
-  .path-card {
-    border-radius: 14px; padding: 14px 16px;
+  /* ─── 3 MODES ─── */
+  .modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; flex: 1; }
+  .mode-card {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+    padding: 12px 14px; display: flex; flex-direction: column;
     position: relative; overflow: hidden;
-    display: flex; flex-direction: column;
   }
-  .path-card::before {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  .mode-card::after {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 12px 12px 0 0;
   }
-  .path-a { background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.25); }
-  .path-a::before { background: linear-gradient(90deg, #7c3aed, var(--purple)); }
-  .path-b { background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.25); }
-  .path-b::before { background: linear-gradient(90deg, var(--yellow), var(--accent2)); }
-  .path-label {
-    font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-    margin-bottom: 6px;
+  .mode-1::after { background: linear-gradient(90deg, var(--purple), #c084fc); }
+  .mode-2::after { background: linear-gradient(90deg, var(--teal), #38bdf8); }
+  .mode-3::after { background: linear-gradient(90deg, var(--yellow), var(--accent2)); }
+  .mode-emoji { font-size: 20px; margin-bottom: 6px; }
+  .mode-num { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: var(--text2); text-transform: uppercase; margin-bottom: 4px; }
+  .mode-name { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .mode-desc { font-size: 10.5px; color: var(--text2); line-height: 1.5; margin-bottom: 8px; }
+  .mode-trigger {
+    margin-top: auto;
+    background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 6px; padding: 6px 8px;
+    font-size: 10px; color: var(--text2); font-style: italic; line-height: 1.4;
   }
-  .path-label-a { color: var(--purple); }
-  .path-label-b { color: var(--yellow); }
-  .path-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-  .path-desc { font-size: 11px; color: var(--text2); line-height: 1.55; margin-bottom: 8px; }
-  .path-example {
-    background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 8px; padding: 8px 10px; font-size: 11px; color: var(--text2);
-    line-height: 1.5; font-style: italic; margin-top: auto;
-  }
-  .path-example strong { color: var(--text); font-style: normal; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .mode-trigger strong { color: var(--text); font-style: normal; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-  /* ─── RIGHT: DEMO CHAT + RESULTADO ─── */
+  /* ─── RIGHT COLUMN ─── */
   .right { display: flex; flex-direction: column; gap: 12px; }
 
-  .chat-panel {
-    background: var(--bg2); border: 1px solid var(--border); border-radius: 14px;
-    padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;
-  }
-  .chat-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text2); }
-  .msg { display: flex; gap: 8px; align-items: flex-start; }
-  .msg.user { flex-direction: row-reverse; }
-  .avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; flex-shrink: 0;
-  }
-  .avatar.user-av { background: var(--blue); }
-  .avatar.agent-av { background: var(--accent); }
-  .bubble { max-width: 88%; padding: 8px 12px; border-radius: 10px; font-size: 12px; line-height: 1.5; }
-  .msg.user .bubble { background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); border-radius: 10px 10px 2px 10px; }
-  .msg.agent .bubble { background: rgba(254,80,0,0.08); border: 1px solid rgba(254,80,0,0.25); border-radius: 10px 10px 10px 2px; }
-
-  /* ─── PIPELINE RESULT ─── */
+  /* ─── PIPELINE ─── */
   .pipeline {
-    background: var(--bg3); border: 1px solid var(--border); border-radius: 14px;
-    padding: 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 14px;
+    padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;
   }
-  .pipe-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+  .pipe-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent2); margin-bottom: 6px; }
   .pipe-step {
     display: flex; align-items: center; gap: 10px;
-    padding: 6px 10px; border-radius: 8px;
-    background: rgba(255,255,255,0.02);
+    padding: 5px 10px; border-radius: 8px;
     font-size: 12px;
   }
   .pipe-icon {
@@ -140,154 +104,179 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 12px; flex-shrink: 0;
   }
-  .pipe-1 { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.3); }
-  .pipe-2 { background: rgba(234,179,8,0.15); border: 1px solid rgba(234,179,8,0.3); }
-  .pipe-3 { background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.3); }
-  .pipe-4 { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); }
-  .pipe-5 { background: rgba(20,184,166,0.15); border: 1px solid rgba(20,184,166,0.3); }
+  .pi-1 { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.3); }
+  .pi-2 { background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.3); }
+  .pi-3 { background: rgba(234,179,8,0.15); border: 1px solid rgba(234,179,8,0.3); }
+  .pi-4 { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); }
+  .pi-5 { background: rgba(20,184,166,0.15); border: 1px solid rgba(20,184,166,0.3); }
   .pipe-text { color: var(--text2); }
   .pipe-text strong { color: var(--text); font-weight: 600; }
-  .pipe-arrow { color: var(--border); font-size: 10px; margin-left: auto; }
+  .pipe-connector { text-align: center; color: var(--border); font-size: 10px; line-height: 1; padding: 0; margin: -2px 0; }
+
+  /* ─── QA PANEL ─── */
+  .qa-panel {
+    background: var(--bg3); border: 1px solid rgba(34,197,94,0.25); border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .qa-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .qa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+  .qa-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text2); padding: 3px 0; }
+  .qa-check { color: var(--green); font-weight: 700; font-size: 10px; flex-shrink: 0; }
+
+  /* ─── OUTPUT FILES ─── */
+  .output-panel {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 14px;
+    padding: 14px 16px; flex: 1;
+    font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.8;
+  }
+  .out-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; font-family: 'Inter', sans-serif; }
+  .ft-dir { color: var(--accent2); font-weight: 600; }
+  .ft-file { color: var(--green); }
+  .ft-key { color: var(--blue); }
+  .ft-opt { color: var(--text2); font-style: italic; }
 
   /* ─── BOTTOM ─── */
   .bottom {
-    margin-top: 14px; width: 100%; max-width: 1100px;
-    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-top: 12px; width: 100%; max-width: 1120px;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
     background: rgba(254,80,0,0.06); border: 1px solid rgba(254,80,0,0.2);
     border-radius: 10px; padding: 10px 20px;
   }
-  .bottom-icon { font-size: 20px; }
   .bottom-text { font-size: 14px; font-weight: 700; color: var(--accent2); }
-  .bottom-sub { font-size: 12px; color: var(--text2); margin-left: 4px; }
+  .bottom-sep { color: var(--border); }
+  .bottom-sub { font-size: 12px; color: var(--text2); }
 </style>
 </head>
 <body>
 
   <div class="header">
     <div class="badge">Bloco 4 — Skill Creator</div>
-    <h1>Crie suas próprias skills</h1>
-    <p class="subtitle">Linguagem natural → skill funcional → rodando automaticamente</p>
-  </div>
-
-  <div class="kpis">
-    <div class="kpi"><div class="kpi-val">5 min</div><div class="kpi-lbl">pra criar uma skill</div></div>
-    <div class="kpi"><div class="kpi-val">QA</div><div class="kpi-lbl">automático antes de salvar</div></div>
-    <div class="kpi"><div class="kpi-val">3 modos</div><div class="kpi-lbl">de criação disponíveis</div></div>
+    <h1>O agente que cria outros agentes</h1>
+    <p class="subtitle">Descreva um processo → skill funcional com QA automático → pronta pra usar</p>
   </div>
 
   <div class="main">
     <!-- LEFT COLUMN -->
     <div class="left">
-      <!-- Skill vs Prompt -->
-      <div class="concept-row">
-        <div class="concept-card card-bad">
-          <div class="card-tag tag-red">Prompt</div>
-          <div class="card-title">Temporário</div>
-          <ul class="card-list">
+
+      <!-- Prompt vs Skill -->
+      <div class="vs-row">
+        <div class="vs-card card-bad">
+          <div class="vs-tag tag-red">Prompt</div>
+          <div class="vs-title">Temporário</div>
+          <ul class="vs-list">
+            <li><span class="x">✗</span> Morre quando a sessão fecha</li>
             <li><span class="x">✗</span> Explica tudo de novo toda vez</li>
-            <li><span class="x">✗</span> Morre quando fecha a sessão</li>
-            <li><span class="x">✗</span> Depende da sua memória</li>
-            <li><span class="x">✗</span> Impossível delegar</li>
+            <li><span class="x">✗</span> Vive na cabeça de alguém</li>
+            <li><span class="x">✗</span> Impossível delegar ou agendar</li>
           </ul>
         </div>
-        <div class="concept-card card-good">
-          <div class="card-tag tag-green">Skill</div>
-          <div class="card-title">Permanente</div>
-          <ul class="card-list">
-            <li><span class="v">✓</span> Conhecimento preservado</li>
+        <div class="vs-card card-good">
+          <div class="vs-tag tag-green">Skill</div>
+          <div class="vs-title">Permanente</div>
+          <ul class="vs-list">
             <li><span class="v">✓</span> Salva no Cérebro (Git)</li>
+            <li><span class="v">✓</span> Qualquer agente acessa</li>
             <li><span class="v">✓</span> Roda quando quiser / agendar</li>
-            <li><span class="v">✓</span> Qualquer agente pode usar</li>
+            <li><span class="v">✓</span> Melhora a cada uso</li>
           </ul>
         </div>
       </div>
 
-      <!-- Dois caminhos -->
-      <div class="paths">
-        <div class="path-card path-a">
-          <div class="path-label path-label-a">Caminho A</div>
-          <div class="path-title">"Já faço isso, quero preservar"</div>
-          <div class="path-desc">Você já tem um processo manual que funciona. O Skill Creator transforma em receita reutilizável.</div>
-          <div class="path-example">
-            <strong>Exemplo</strong><br>
-            "Todo mês eu analiso a planilha de vendas e monto um relatório com faturamento, ticket médio e meta..."
-          </div>
+      <!-- 3 Modes -->
+      <div class="modes">
+        <div class="mode-card mode-1">
+          <div class="mode-emoji">📸</div>
+          <div class="mode-num">Modo 1</div>
+          <div class="mode-name">Captura de sessão</div>
+          <div class="mode-desc">Acabou de fazer algo com o agente? Ele lê o histórico e monta a skill sozinho.</div>
+          <div class="mode-trigger"><strong>Exemplo</strong><br>"Transforma isso que a gente fez em skill"</div>
         </div>
-        <div class="path-card path-b">
-          <div class="path-label path-label-b">Caminho B</div>
-          <div class="path-title">"Tenho uma ideia, quero criar"</div>
-          <div class="path-desc">Você descreve o que precisa e o agente faz as perguntas certas até montar a skill completa.</div>
-          <div class="path-example">
-            <strong>Exemplo</strong><br>
-            "Quero algo que analise meus leads e me avise no Telegram quando algum estiver esfriando..."
-          </div>
+        <div class="mode-card mode-2">
+          <div class="mode-emoji">📋</div>
+          <div class="mode-num">Modo 2</div>
+          <div class="mode-name">Colar processo</div>
+          <div class="mode-desc">Tem um passo-a-passo anotado? Cola no chat — o agente identifica as etapas.</div>
+          <div class="mode-trigger"><strong>Exemplo</strong><br>"Todo mês eu acesso o painel, exporto o relatório e mando por email"</div>
+        </div>
+        <div class="mode-card mode-3">
+          <div class="mode-emoji">💡</div>
+          <div class="mode-num">Modo 3</div>
+          <div class="mode-name">Descrever ideia</div>
+          <div class="mode-desc">Ideia vaga? O agente faz as perguntas certas até montar a skill completa.</div>
+          <div class="mode-trigger"><strong>Exemplo</strong><br>"Quero algo que avise quando um lead esfria"</div>
         </div>
       </div>
+
     </div>
 
     <!-- RIGHT COLUMN -->
     <div class="right">
-      <!-- Chat demo -->
-      <div class="chat-panel">
-        <div class="chat-label">Demo — criando uma skill ao vivo</div>
-        <div class="msg user">
-          <div class="avatar user-av">👤</div>
-          <div class="bubble">Crie uma skill que analise minha planilha de leads e me diga quais estão esfriando</div>
-        </div>
-        <div class="msg agent">
-          <div class="avatar agent-av">🤖</div>
-          <div class="bubble">Entendido! Antes de criar, me confirma:<br>
-          <strong>1.</strong> Qual o critério de "esfriando"? (ex: 7 dias sem contato)<br>
-          <strong>2.</strong> Quer receber o alerta onde? (Telegram, email...)<br>
-          <strong>3.</strong> Com que frequência? (diária, semanal...)</div>
-        </div>
-        <div class="msg user">
-          <div class="avatar user-av">👤</div>
-          <div class="bubble">Leads sem contato há 7+ dias, me avisa todo dia às 9h no Telegram</div>
-        </div>
-        <div class="msg agent">
-          <div class="avatar agent-av">🤖</div>
-          <div class="bubble">✅ <strong>SKILL.md</strong> criado em <strong>areas/vendas/skills/</strong><br>
-          ✅ Cron configurado: diário às 09:00<br>
-          ✅ Notificação Telegram ativada</div>
-        </div>
-      </div>
 
       <!-- Pipeline -->
       <div class="pipeline">
-        <div class="pipe-label">O que acontece por trás</div>
+        <div class="pipe-label">O que acontece quando você pede /criar-skill</div>
         <div class="pipe-step">
-          <div class="pipe-icon pipe-1">🎯</div>
-          <div class="pipe-text"><strong>Coleta</strong> — entende o que você precisa</div>
-          <div class="pipe-arrow">→</div>
+          <div class="pipe-icon pi-1">🎯</div>
+          <div class="pipe-text"><strong>Detecta modo</strong> — captura, workflow ou entrevista</div>
         </div>
+        <div class="pipe-connector">↓</div>
         <div class="pipe-step">
-          <div class="pipe-icon pipe-2">📝</div>
-          <div class="pipe-text"><strong>Gera SKILL.md</strong> — escreve a receita completa</div>
-          <div class="pipe-arrow">→</div>
+          <div class="pipe-icon pi-2">📝</div>
+          <div class="pipe-text"><strong>Gera SKILL.md</strong> — workflow, edge cases, exemplos</div>
         </div>
+        <div class="pipe-connector">↓</div>
         <div class="pipe-step">
-          <div class="pipe-icon pipe-3">🔍</div>
-          <div class="pipe-text"><strong>QA automático</strong> — valida antes de salvar</div>
-          <div class="pipe-arrow">→</div>
+          <div class="pipe-icon pi-3">🔍</div>
+          <div class="pipe-text"><strong>QA automático</strong> — 10 checks antes de salvar</div>
         </div>
+        <div class="pipe-connector">↓</div>
         <div class="pipe-step">
-          <div class="pipe-icon pipe-4">💾</div>
-          <div class="pipe-text"><strong>Salva no Cérebro</strong> — commit no repositório</div>
-          <div class="pipe-arrow">→</div>
+          <div class="pipe-icon pi-4">💾</div>
+          <div class="pipe-text"><strong>Deploy</strong> — salva no Cérebro + evals de teste</div>
         </div>
+        <div class="pipe-connector">↓</div>
         <div class="pipe-step">
-          <div class="pipe-icon pipe-5">⚡</div>
-          <div class="pipe-text"><strong>Pronta pra usar</strong> — qualquer agente acessa</div>
+          <div class="pipe-icon pi-5">⚡</div>
+          <div class="pipe-text"><strong>Pronta</strong> — qualquer agente usa, agenda, evolui</div>
         </div>
       </div>
+
+      <!-- QA Checks -->
+      <div class="qa-panel">
+        <div class="qa-label">QA automático — 10 checks</div>
+        <div class="qa-grid">
+          <div class="qa-item"><span class="qa-check">✓</span> Nome em kebab-case</div>
+          <div class="qa-item"><span class="qa-check">✓</span> Triggers suficientes</div>
+          <div class="qa-item"><span class="qa-check">✓</span> Passos claros e imperativos</div>
+          <div class="qa-item"><span class="qa-check">✓</span> Exemplos reais (in/out)</div>
+          <div class="qa-item"><span class="qa-check">✓</span> Edge cases cobertos</div>
+          <div class="qa-item"><span class="qa-check">✓</span> Output format definido</div>
+          <div class="qa-item"><span class="qa-check">✓</span> Sem linguagem vaga</div>
+          <div class="qa-item"><span class="qa-check">✓</span> Sem credenciais expostas</div>
+          <div class="qa-item"><span class="qa-check">✓</span> Boundaries negativos</div>
+          <div class="qa-item"><span class="qa-check">✓</span> Evals preparados</div>
+        </div>
+      </div>
+
+      <!-- Output structure -->
+      <div class="output-panel">
+        <div class="out-label">O que é gerado</div>
+        <span class="ft-dir">skill-name/</span><br>
+        <span style="color:var(--border)">├── </span><span class="ft-key">SKILL.md</span> <span class="ft-opt">← workflow, regras, edge cases</span><br>
+        <span style="color:var(--border)">├── </span><span class="ft-dir">evals/</span><br>
+        <span style="color:var(--border)">│   └── </span><span class="ft-file">evals.json</span> <span class="ft-opt">← testes automáticos</span><br>
+        <span style="color:var(--border)">├── </span><span class="ft-dir">references/</span> <span class="ft-opt">← docs de apoio (opcional)</span><br>
+        <span style="color:var(--border)">└── </span><span class="ft-dir">scripts/</span> <span class="ft-opt">← código executável (opcional)</span>
+      </div>
+
     </div>
   </div>
 
   <div class="bottom">
-    <span class="bottom-icon">💡</span>
-    <span class="bottom-text">O conhecimento sai da sua cabeça e vira receita reutilizável.</span>
-    <span class="bottom-sub">— Nunca mais explique o mesmo processo duas vezes.</span>
+    <span class="bottom-text">💡 Conhecimento sai da cabeça → vira receita → melhora a cada uso</span>
+    <span class="bottom-sep">|</span>
+    <span class="bottom-sub">Skills não saem perfeitas na 1ª vez — e tá tudo bem. Elas evoluem com o uso real.</span>
   </div>
 
 </body>

@@ -234,11 +234,11 @@ E a melhor parte: toda área e sub-área segue a mesma estrutura. Marketing tem 
 
 Agora o momento que importa — a mesma pergunta em duas ferramentas diferentes.
 
-🎬 **OpenClaw no Telegram:** *"Qual o MRR atual da empresa?"*
-→ Responde com o número exato do `metricas.md`.
+🎬 **OpenClaw no Telegram:** *"Me dá um contexto geral sobre a empresa"*
+→ Responde com missão, produtos, público, canais — tudo do `contexto/geral.md`.
 
 🎬 **Claude Cowork:** mesma pergunta, palavra por palavra.
-→ Mesma resposta. Mesmo número.
+→ Mesma resposta. Mesmas informações.
 
 Duas ferramentas diferentes. Mesma resposta. Porque o Cérebro é um só — e é seu, não da ferramenta.
 
@@ -321,7 +321,7 @@ Exemplos:
 
 O agente lê o `_index.md` da área, encontra a skill certa, lê o `SKILL.md`, e executa.
 
-🎬 Executando ao vivo: *"Gera o relatório de vendas baseado no vendas.csv"*
+🎬 Executando ao vivo: *"Me gera o relatório de vendas do dia 21 de março"*
 
 *(agente lê o _index → encontra a skill → lê o SKILL.md → lê o CSV → gera relatório em texto)*
 
@@ -337,11 +337,11 @@ O agente leu a receita, pegou os dados, gerou a análise. Nenhuma linha de códi
 
 O relatório em texto funciona. Mas e se a gente quisesse algo mais visual? Vamos evoluir essa skill agora, ao vivo.
 
-A `relatorio-vendas` hoje só tem o `SKILL.md`. Vamos adicionar um `scripts/` com um gerador de HTML — pra ela entregar um dashboard visual com gráficos, barras de progresso e alertas coloridos.
+Agora vamos pedir pro agente transformar esse relatório em algo mais bonito — visual, com gráficos e cores.
 
-🎬 Evoluindo ao vivo: *"Evolui a skill relatorio-vendas pra gerar o output em HTML visual, com gráficos de barra, KPIs coloridos, alertas e barra de progresso da meta mensal. Cria um script Python em scripts/generate_report.py"*
+🎬 Evoluindo ao vivo: *"Quero que esse relatório de vendas fique mais visual — gera um HTML tipo dashboard bonito, com gráficos de barra, números coloridos e uma barra mostrando quanto falta pra bater a meta do mês"*
 
-*(agente lê o SKILL.md atual → cria a pasta scripts/ → gera o script generate_report.py → atualiza o SKILL.md pra referenciar o script)*
+*(o agente entende o pedido, evolui a skill sozinho e gera um dashboard profissional)*
 
 📎 Abre o HTML gerado ao vivo.
 
@@ -375,11 +375,15 @@ Pausa de 10 minutos — voltamos às 10h40.
 
 📤 **Mensagem:**
 
-**Skill-creator — o agente que cria outros agentes**
+**O problema: conhecimento que evapora**
 
-O skill-creator é uma skill que cria outras skills. Você descreve em linguagem natural o que quer automatizar — o agente gera a skill completa, pronta pra usar.
+Toda empresa tem processos que vivem na cabeça de alguém. Um prompt que funcionou ontem — mas que ninguém salvou. Um relatório que só o fulano sabe montar. Uma resposta padrão que muda a cada vez que alguém manda.
 
-📎 `slides/05-skill-creator.html`
+Prompt é temporário. Morre quando a sessão fecha. Skill é permanente — fica salva no Cérebro, qualquer agente acessa, roda quando quiser.
+
+O skill-creator resolve isso: transforma qualquer processo em uma skill estruturada, com QA automático, pronta pra usar.
+
+📂 `slides/05-skill-creator.html` *(abrir arquivo ao vivo)*
 
 ⏸ *Aguarda "próximo"*
 
@@ -387,26 +391,77 @@ O skill-creator é uma skill que cria outras skills. Você descreve em linguagem
 
 📤 **Mensagem:**
 
-🎬 *Pedindo pro agente:*
+**Os 3 modos de criar uma skill**
 
-*"Cria uma skill que analise minha planilha de leads e me diga quais estão esfriando — leads que entraram há mais de 7 dias sem follow-up"*
+O skill-creator detecta automaticamente qual modo usar:
 
-*(agente gera `cerebro/areas/vendas/skills/leads-esfriando/SKILL.md` completo)*
+**Modo 1 — Captura de sessão**
+Você acabou de fazer algo com o agente. Diz: *"Transforma isso em skill"*. O agente lê o que vocês fizeram juntos e monta a skill automaticamente.
 
-Abrindo o arquivo ao vivo — Input, Processo, Output estruturados.
+**Modo 2 — Colar um processo existente**
+Você tem um passo-a-passo anotado (Notion, doc, papel). Cola no chat. O agente identifica as etapas e gera.
 
-Testando imediatamente: *"Roda a skill de leads esfriando no arquivo leads.csv"*
+**Modo 3 — Descrever uma ideia**
+Você tem uma ideia vaga: *"Quero algo que avise quando um lead esfria"*. O agente faz as perguntas certas até entender input, output e regras — depois gera.
 
-*(agente executa → resultado aparece)*
-
-Linguagem natural virou automação funcional em 30 segundos. Sem código.
+📂 `cerebro/empresa/skills/criar-skill/SKILL.md` *(abrir arquivo ao vivo — mostrar a seção "Detecção de Modo")*
 
 ⏸ *Aguarda "próximo"*
 
 ---
 
-> 🗒️ **Nota para o Bruno:**
-> Aqui é o momento de plugar o seu gerador de skills e mostrar pro pessoal como funciona na prática — o fluxo completo de descrever → gerar → testar. Revisar esse trecho e adaptar com a ferramenta que vai usar na demo.
+📤 **Mensagem:**
+
+🎬 **Demo ao vivo — criando uma skill do zero**
+
+Vamos usar o Modo 3. Pedindo pro agente:
+
+*"Cria uma skill que analise minha planilha de leads e me diga quais estão esfriando — leads sem follow-up há mais de 7 dias"*
+
+*(agente entra em modo entrevista → faz perguntas de esclarecimento → gera SKILL.md + evals)*
+
+Olha o que ele gerou:
+- **SKILL.md** com workflow completo, edge cases, exemplos
+- **evals/evals.json** com casos de teste automáticos
+- **QA automático** rodou 10 checks antes de salvar
+
+📂 `cerebro/areas/vendas/skills/leads-esfriando/SKILL.md` *(abrir arquivo gerado ao vivo)*
+
+⏸ *Aguarda "próximo"*
+
+---
+
+📤 **Mensagem:**
+
+**O QA automático — por que isso importa**
+
+Toda skill passa por 10 verificações antes de ser salva:
+
+Nome no formato certo? Descrição com triggers suficientes? Cada passo é uma ação clara? Tem exemplos reais? Edge cases cobertos? Sem credenciais expostas?
+
+Se o score for menor que 7/10, o agente corrige sozinho. Se for 7 ou mais, mostra pra você revisar.
+
+E se ele encontrar uma senha ou API key no meio da skill? Ele detecta, protege automaticamente (via variável de ambiente ou 1Password), e avisa você.
+
+Skills que não servem uma área específica ficam em `empresa/skills/`. Skills de área ficam dentro de cada área em `areas/*/skills/`.
+
+⏸ *Aguarda "próximo"*
+
+---
+
+📤 **Mensagem:**
+
+**Skills não saem perfeitas na primeira vez — e tá tudo bem**
+
+Uma skill deployada não é uma skill pronta. É uma skill que precisa ser testada com dados reais.
+
+O fluxo é: gerar → testar → encontrar erro → corrigir o SKILL.md → testar de novo. Cada correção torna a skill mais robusta pra sempre.
+
+📂 `cerebro/empresa/skills/criar-skill/references/guia-refinamento.md` *(abrir arquivo ao vivo — mostrar exemplo real de refinamento em 3 ciclos)*
+
+> A skill é como uma receita: na primeira vez você descobre o que ajustar. Na segunda, já sabe. Na terceira, está no automático.
+
+⏸ *Aguarda "próximo"*
 
 ---
 
@@ -420,7 +475,7 @@ Isso fica configurado nas instruções do agente — no `SOUL.md`. Ele monitora 
 
 🎬 Abrindo ao vivo a instrução:
 
-📎 `cerebro/agentes/assistente/SOUL.md` — seção de proatividade.
+📂 `cerebro/agentes/assistente/SOUL.md` *(abrir arquivo ao vivo — seção de proatividade)*
 
 > O agente não só executa. Ele evolui o sistema junto com você.
 
@@ -918,7 +973,7 @@ Repara: ele não jogou um link. Contextualizou, respondeu direto, apontou a seç
 > 💡 **Sugestões de perguntas que NÃO estão na base:**
 > - *"Vocês vão ter desconto pra grupos de empresa?"* — não tem na base, questão comercial
 > - *"Consigo rodar o OpenClaw num Raspberry Pi?"* — não tem na base, caso técnico específico
-> - *"Quando sai a próxima turma do Pixel IA?"* — não tem na base, questão de agenda
+> - *"O Enterprise inclui migração dos meus dados?"* — não tem na base, questão comercial
 > - *"Meu pagamento foi debitado duas vezes, como resolvo?"* — não tem na base, questão financeira que escala pro Bruno
 > - *"Dá pra integrar com o Notion?"* — não tem na base, feature request
 
