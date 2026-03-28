@@ -916,10 +916,6 @@ Relatório → análise → criativo pronto. O ciclo completo rodou numa convers
 
 📤 **Mensagem:**
 
-📎 `slides/checkpoint-04.html` *(checkpoint de progresso)*
-
-Olha quanta coisa vocês já absorveram. Multi-agente, organização, marketing automatizado. Agora vamos fazer uma pausa — e quando voltar, mergulho no bot de suporte que aprende sozinho.
-
 Última pausa — voltamos às 10h50.
 
 ---
@@ -930,7 +926,7 @@ Olha quanta coisa vocês já absorveram. Multi-agente, organização, marketing 
 
 📤 **Mensagem:**
 
-📎 `slides/checkpoint-05.html` *(checkpoint de progresso)*
+📎 `slides/checkpoint-04.html` *(checkpoint de progresso)*
 
 Voltamos. Olha o recap — vocês já sabem montar um sistema multi-agente completo com gestão automática e marketing de performance. Agora o último grande tema: um bot de suporte que aprende sozinho com a operação.
 
@@ -1108,14 +1104,6 @@ Comparativo: freelancer de suporte custa R$ 2.000–4.000/mês, trabalha em hor�
 ---
 
 ### Bloco 11: Por Onde Começar — 11h35 (15 min)
-
----
-
-📤 **Mensagem:**
-
-📎 `slides/checkpoint-06.html` *(checkpoint de progresso)*
-
-Olha essa lista. Em dois dias vocês viram: Cérebro, Skills, Crons, sistema multi-agente completo, marketing automatizado, bot de suporte que aprende sozinho. Agora a pergunta final: como começar isso na sua empresa?
 
 ---
 
