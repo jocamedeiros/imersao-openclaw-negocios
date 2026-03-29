@@ -1225,20 +1225,26 @@ Custo de tudo isso: ~R$ 1k/mês (assinatura OpenAI via OAuth). Pra 7.000 alunos 
 
 **Como começar na sua empresa**
 
-São duas etapas. A primeira é só da diretoria — montar a fundação.
+São três etapas. A primeira é só da diretoria — montar a fundação.
 
-**Etapa 1 — Diretoria (primeira semana)**
+**Etapa 1 — Fundação (diretoria)**
 
-1. **Criar o repositório (cérebro)** — estrutura de pastas: áreas, agentes, skills
-2. **Alimentar com contexto** — o passo mais importante e mais demorado. Conecta via API nas ferramentas que você já usa (Notion, Google Drive, exporta em Markdown)
-3. **Mapear as áreas** — as que fazem sentido pra diretoria no primeiro momento. Entende os processos e vai abstraindo em tarefas e habilidades
-4. **Criar as primeiras skills** — começa pelas mais simples, valida, e vai evoluindo
-5. **Agendar crons** — o que deve rodar sozinho, roda sozinho
+1. **Criar o repositório (cérebro)** — a estrutura de pastas que vocês viram: áreas, agentes, skills, rotinas
+2. **Conectar os agentes pessoais dos diretores ao cérebro** — cada diretor já usa seu agente pessoal. Agora conecta ele ao repositório pra que ele tenha acesso ao contexto da empresa
+3. **Criar o primeiro agente da empresa** — um agente compartilhado, conectado ao cérebro. Ele é o ponto de partida pra toda a operação
+4. **Alimentar com contexto** — o passo mais importante e mais demorado. Documenta processos, conecta nas ferramentas que vocês já usam, exporta em Markdown
+5. **Criar as primeiras skills** — começa pelas mais simples, valida, e vai evoluindo
+6. **Criar rotinas** — o que deve rodar sozinho, roda sozinho. Agenda os primeiros crons
 
 **Etapa 2 — Escalar pro time**
 
-6. **Criar agentes especializados** — quando fizer sentido, separa workspaces com escopo claro
-7. **Onboarding do time** — configura o agente pra se apresentar (regra no SOUL.md que lê o _index.md das skills), coloca no grupo, e deixa o próprio agente ensinar o time a usá-lo
+7. **Alimentar o contexto de cada área** — com mais profundidade e riqueza, área por área
+8. **Criar agentes especializados** — quando fizer sentido, separa workspaces com escopo claro por área
+
+**Etapa 3 — Adoção**
+
+9. **Onboarding do time** — configura o agente pra se apresentar (regra no SOUL.md que lê o _index.md das skills), coloca no grupo, e deixa o próprio agente ensinar o time a usá-lo
+10. **Acompanhar e iterar** — o sistema evolui com o uso. Cada conversa, cada rotina, cada skill nova alimenta o cérebro
 
 📎 `slides/19-roadmap-30dias.html`
 
@@ -1254,7 +1260,9 @@ São duas etapas. A primeira é só da diretoria — montar a fundação.
 
 **Resumo: o que vocês viram nesses 2 dias**
 
-Agora vocês entendem como funciona o cérebro da empresa — um repositório que centraliza todo o contexto. Como cada agente acessa só o que precisa. Como você cria processos, habilidades, automações. Como agenda crons pra rodar sozinho. Como separa agentes com escopo claro. Como monta um bot de suporte que aprende com a operação.
+No primeiro dia, vocês entenderam o problema e a arquitetura — por que um repositório centralizado é o sistema nervoso da empresa. Fizeram o tour pelo cérebro, viram como criar skills em linguagem natural, como usar o Skill Creator pra gerar skills novas, como agendar rotinas com crons pra rodar sozinho, e como funciona a camada de segurança.
+
+No segundo dia, entraram no multi-agente — como separar agentes com escopo claro e como funciona o permissionamento. Fizeram o deep dive em marketing de performance — os 6 níveis de evolução, da documentação até 95% automatizado. Viram como montar um bot de suporte que aprende sozinho com a operação. E fecharam com o roadmap pra começar na empresa de vocês.
 
 Tudo isso funciona. Vocês viram ao vivo.
 
@@ -1266,22 +1274,24 @@ Tudo isso funciona. Vocês viram ao vivo.
 
 📤 **Mensagem:**
 
-**Qual é o próximo passo?**
+**Da imersão ao resultado: implemente o Cérebro IA da sua empresa**
 
-A gente abriu 10 vagas para a primeira turma de uma mentoria de 3 meses.
+Vocês já entenderam o poder. Agora é hora de implementar. A gente abriu 10 vagas pra primeira turma de uma mentoria de 90 dias — acompanhamento completo pra transformar a empresa de vocês com agentes inteligentes, personalizado pro negócio de cada um.
 
-São encontros quinzenais em grupo, de 2 horas, com apenas 10 pessoas — pra ter trocas reais, profundas, sobre os problemas práticos de cada negócio.
+**O que vocês recebem:**
 
-**Como funciona:**
+- **Diagnóstico completo** — a gente mapeia a empresa de vocês: áreas, processos, ferramentas, gargalos. Entende onde a IA gera mais valor no contexto de vocês antes de começar
+- **Plano de ação de 90 dias** — um roadmap personalizado pra implementar tudo que vocês viram aqui na imersão, passo a passo, adaptado ao tamanho e realidade do negócio
+- **6 encontros ao vivo** — quinzenais, 2h cada, pra acompanhamento, dúvidas técnicas e implementação. Tudo que vocês não entenderam na imersão, resolve aqui
+- **Acompanhamento individual** — grupo exclusivo com acesso direto ao time. Sua equipe também participa. Sem esperar a próxima sessão pra destravar
 
-- **Encontros quinzenais em grupo** — a gente trabalha em cima dos desafios reais do seu dia a dia, aplicando tudo isso na prática no seu negócio específico
-- **Diagnóstico antes de cada sessão** — a gente roda um diagnóstico pra capturar os desafios de cada um, então já chegamos preparados
-- **Acompanhamento assíncrono** — cada empresário tem um grupo individual com a nossa equipe. Não é só o grupo geral com todos: você tem um grupo só seu, pra acionar a gente quando precisar, tirar dúvidas de forma assíncrona
-- **Sua equipe dentro** — quem está sendo responsável por implementar pode entrar no seu grupo individual e tirar dúvidas direto com a gente
+**Quem conduz:** Bruno Okamoto (Estratégia de IA), Cayo (Arquitetura de IA) e Matheus Cardozo (Operação & Implementação). Acesso direto a quem já fez.
 
-**Investimento:** Por ser a primeira turma, saiu de R$ 30.000 por **R$ 20.000**.
+**Investimento:** Por ser a primeira turma, saiu de R$ 50.000 por **R$ 30.000** — até 3x no cartão.
 
 **São apenas 10 vagas.** Quem passar desse número entra numa lista de espera pra uma futura turma.
+
+Dúvidas? Fale com a Isadora: (51) 99648-3708
 
 📎 `slides/21-pitch-mentoria.html`
 

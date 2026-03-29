@@ -102,6 +102,9 @@
   .step:nth-child(5) { animation-delay: 0.25s; }
   .step:nth-child(6) { animation-delay: 0.3s; }
   .step:nth-child(7) { animation-delay: 0.35s; }
+  .step:nth-child(8) { animation-delay: 0.4s; }
+  .step:nth-child(9) { animation-delay: 0.45s; }
+  .step:nth-child(10) { animation-delay: 0.5s; }
 
   /* LEFT COLUMN */
   .step-left {
@@ -190,7 +193,7 @@
   .st-pink { color: var(--pink); }
   .st-accent { color: var(--accent); }
 
-  /* HIGHLIGHT STEP 7 */
+  /* HIGHLIGHT LAST STEP */
   .step-highlight .step-content {
     background: var(--accent-glow);
     border: 1px solid rgba(254, 80, 0, 0.15);
@@ -198,38 +201,6 @@
     padding: 16px 20px 20px;
     margin-top: 4px;
   }
-
-  /* BOTTOM CALLOUT */
-  .callout {
-    margin-top: 40px;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 28px 32px;
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    opacity: 0;
-    transform: translateY(12px);
-    animation: fadeUp 0.5s ease forwards;
-    animation-delay: 0.45s;
-  }
-  .callout-icon {
-    font-size: 32px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .callout-title {
-    font-size: 16px;
-    font-weight: 800;
-    margin-bottom: 6px;
-  }
-  .callout-desc {
-    font-size: 14px;
-    color: var(--text2);
-    line-height: 1.6;
-  }
-  .callout-desc strong { color: var(--text); font-weight: 600; }
 
   /* PHASE DIVIDER */
   .phase-divider {
@@ -240,8 +211,9 @@
     padding-left: 64px;
     opacity: 0;
     animation: fadeUp 0.5s ease forwards;
-    animation-delay: 0.27s;
   }
+  .pd-1 { animation-delay: 0.32s; }
+  .pd-2 { animation-delay: 0.47s; }
   .phase-divider-line {
     flex: 1;
     height: 1px;
@@ -265,12 +237,14 @@
 <div class="container">
 
   <div class="header">
-    <div class="header-badge">Roadmap prático — 2 etapas</div>
+    <div class="header-badge">Roadmap prático — 3 etapas</div>
     <h1>Como começar <span>na sua empresa</span></h1>
-    <div class="header-sub">Etapa 1 é só da diretoria. Etapa 2 escala pro time.</div>
+    <div class="header-sub">Etapa 1 é da diretoria. Etapa 2 escala pro time. Etapa 3 é adoção.</div>
   </div>
 
   <div class="steps">
+
+    <!-- ETAPA 1 — FUNDAÇÃO -->
 
     <div class="step">
       <div class="step-left">
@@ -278,9 +252,9 @@
         <div class="step-line"></div>
       </div>
       <div class="step-content">
-        <div class="step-tag st-green">Etapa 1 — Diretoria</div>
+        <div class="step-tag st-green">Etapa 1 — Fundação</div>
         <div class="step-title">Criar o repositório (cérebro)</div>
-        <div class="step-desc">Estrutura de pastas: <strong>áreas, agentes, skills</strong>. É o sistema nervoso central da sua operação com IA.</div>
+        <div class="step-desc">A estrutura de pastas que vocês viram: <strong>áreas, agentes, skills, rotinas</strong>. É o sistema nervoso central da operação com IA.</div>
       </div>
     </div>
 
@@ -290,9 +264,9 @@
         <div class="step-line"></div>
       </div>
       <div class="step-content">
-        <div class="step-tag st-blue">O mais importante</div>
-        <div class="step-title">Alimentar com contexto</div>
-        <div class="step-desc">O passo mais demorado. O agente precisa saber sobre sua empresa. Conecta via API nas ferramentas que você já usa — <strong>Notion, Google Drive, exporta em Markdown</strong>.</div>
+        <div class="step-tag st-blue">Conexão pessoal</div>
+        <div class="step-title">Conectar os agentes dos diretores</div>
+        <div class="step-desc">Cada diretor já usa seu agente pessoal. Agora <strong>conecta ele ao cérebro</strong> pra que tenha acesso ao contexto da empresa.</div>
       </div>
     </div>
 
@@ -302,9 +276,9 @@
         <div class="step-line"></div>
       </div>
       <div class="step-content">
-        <div class="step-tag st-purple">Mapeamento</div>
-        <div class="step-title">Mapear área por área</div>
-        <div class="step-desc">As áreas que fazem sentido pra diretoria no primeiro momento. Entende os processos e vai <strong>abstraindo em tarefas e habilidades</strong>.</div>
+        <div class="step-tag st-purple">Primeiro agente</div>
+        <div class="step-title">Criar o agente da empresa</div>
+        <div class="step-desc">Um agente compartilhado, conectado ao cérebro. <strong>O ponto de partida pra toda a operação.</strong></div>
       </div>
     </div>
 
@@ -314,9 +288,9 @@
         <div class="step-line"></div>
       </div>
       <div class="step-content">
-        <div class="step-tag st-yellow">Execução</div>
-        <div class="step-title">Criar as primeiras skills</div>
-        <div class="step-desc">Começa pelas mais simples, valida, e vai evoluindo. <strong>Cada skill é um documento em linguagem natural.</strong></div>
+        <div class="step-tag st-yellow">O mais importante</div>
+        <div class="step-title">Alimentar com contexto</div>
+        <div class="step-desc">O passo mais demorado. Documenta processos, conecta nas ferramentas que você já usa — <strong>Notion, Google Drive, exporta em Markdown</strong>.</div>
       </div>
     </div>
 
@@ -326,16 +300,10 @@
         <div class="step-line"></div>
       </div>
       <div class="step-content">
-        <div class="step-tag st-teal">Automação</div>
-        <div class="step-title">Agendar crons</div>
-        <div class="step-desc">O que deve rodar sozinho, <strong>roda sozinho</strong>. Relatórios, consolidações, health checks.</div>
+        <div class="step-tag st-teal">Execução</div>
+        <div class="step-title">Criar as primeiras skills</div>
+        <div class="step-desc">Começa pelas mais simples, valida, e vai evoluindo. <strong>Cada skill é um documento em linguagem natural.</strong></div>
       </div>
-    </div>
-
-    <div class="phase-divider">
-      <div class="phase-divider-line"></div>
-      <div class="phase-divider-label">Etapa 2 — Escalar pro time</div>
-      <div class="phase-divider-line"></div>
     </div>
 
     <div class="step">
@@ -344,25 +312,76 @@
         <div class="step-line"></div>
       </div>
       <div class="step-content">
-        <div class="step-tag st-pink">Especialização</div>
+        <div class="step-tag st-pink">Automação</div>
+        <div class="step-title">Criar rotinas</div>
+        <div class="step-desc">O que deve rodar sozinho, <strong>roda sozinho</strong>. Relatórios, consolidações, health checks — agenda os primeiros crons.</div>
+      </div>
+    </div>
+
+    <!-- ETAPA 2 — ESCALAR PRO TIME -->
+
+    <div class="phase-divider pd-1">
+      <div class="phase-divider-line"></div>
+      <div class="phase-divider-label">Etapa 2 — Escalar pro time</div>
+      <div class="phase-divider-line"></div>
+    </div>
+
+    <div class="step">
+      <div class="step-left">
+        <div class="step-number sn-blue">7</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-tag st-blue">Profundidade</div>
+        <div class="step-title">Alimentar o contexto de cada área</div>
+        <div class="step-desc">Com mais riqueza e profundidade, <strong>área por área</strong>. Quanto mais contexto, mais inteligente o agente fica.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left">
+        <div class="step-number sn-purple">8</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-tag st-purple">Especialização</div>
         <div class="step-title">Criar agentes especializados</div>
-        <div class="step-desc">Quando fizer sentido, <strong>separa workspaces com escopo claro</strong>. Cada agente acessa só o que precisa.</div>
+        <div class="step-desc">Quando fizer sentido, <strong>separa workspaces com escopo claro</strong> por área. Cada agente acessa só o que precisa.</div>
+      </div>
+    </div>
+
+    <!-- ETAPA 3 — ADOÇÃO -->
+
+    <div class="phase-divider pd-2">
+      <div class="phase-divider-line"></div>
+      <div class="phase-divider-label">Etapa 3 — Adoção</div>
+      <div class="phase-divider-line"></div>
+    </div>
+
+    <div class="step">
+      <div class="step-left">
+        <div class="step-number sn-accent">9</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-tag st-accent">Onboarding</div>
+        <div class="step-title">Onboarding do time</div>
+        <div class="step-desc">Configura o agente pra se apresentar — <strong>regra no SOUL.md que lê o _index.md das skills</strong>. Coloca no grupo e deixa o próprio agente ensinar o time a usá-lo.</div>
       </div>
     </div>
 
     <div class="step step-highlight">
       <div class="step-left">
-        <div class="step-number sn-accent">7</div>
+        <div class="step-number sn-accent">10</div>
       </div>
       <div class="step-content">
-        <div class="step-tag st-accent">Adoção</div>
-        <div class="step-title">Onboarding do time</div>
-        <div class="step-desc">Não adianta montar o sistema perfeito se ninguém sabe usar. Configura o agente pra se apresentar — <strong>regra no SOUL.md que lê o _index.md das skills</strong>. Coloca no grupo e deixa o próprio agente ensinar o time a usá-lo.</div>
+        <div class="step-tag st-accent">Evolução contínua</div>
+        <div class="step-title">Acompanhar e iterar</div>
+        <div class="step-desc">O sistema evolui com o uso. <strong>Cada conversa, cada rotina, cada skill nova alimenta o cérebro.</strong></div>
       </div>
     </div>
 
   </div>
-
 
 </div>
 </body>
