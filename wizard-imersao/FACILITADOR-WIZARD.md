@@ -842,7 +842,7 @@ O agente vira o próprio canal de treinamento. Criou skill nova? O _index.md atu
 
 ---
 
-### Bloco 9: Deep Dive Marketing — 10h05 (35 min)
+### Bloco 9: Deep Dive Marketing — 10h05 (45 min)
 
 ---
 
@@ -856,15 +856,15 @@ Multi-agente dominado. Organização definida. Agora vamos ver o que um agente e
 
 📤 **Mensagem:**
 
-**Marketing de performance — o ciclo automatizado**
+**Marketing de performance — a evolução real**
 
-Hipótese → criativo → teste → dado → conclusão → nova hipótese.
+Antes a gente vivia no Ads Manager. Abria o painel todo dia de manhã, exportava dados pra planilha, cruzava no Reportei pra fazer report bonito. Funcionava? Funcionava. Mas era manual, demorado, e quando o time não olhava por 2 dias, ninguém sabia o que tava acontecendo.
 
-Hoje esse ciclo depende de alguém olhando planilha todo dia. Com o sistema, roda sozinho.
+O que vou mostrar agora é como isso evoluiu ao longo de meses com o agente. Não foi de uma vez — foram 6 níveis de maturidade. Cada um construiu em cima do anterior.
 
-3 skills + 3 crons = ciclo completo no automático.
+📎 `slides/10-marketing-evolucao.html`
 
-📎 `slides/10-marketing-ciclo.html`
+Esse é o mapa completo. Vamos passar por cada nível.
 
 ⏸ *Aguarda "próximo"*
 
@@ -872,21 +872,19 @@ Hoje esse ciclo depende de alguém olhando planilha todo dia. Com o sistema, rod
 
 📤 **Mensagem:**
 
-**Primeira etapa do ciclo: medir o que já tá funcionando**
+**Nível 1 — Monitoramento básico**
 
-Antes de criar qualquer criativo novo, o agente precisa saber o que tá rodando. Qual campanha tá performando, qual tá queimando budget, onde tá o ROAS bom.
+O primeiro passo foi o mais simples: conectar na API do Meta e puxar os dados dos criativos automaticamente. Sem abrir Ads Manager, sem exportar planilha.
 
-Esse relatório chega sozinho todo dia às 8h no Telegram — o cron já manda. Mas você pode pedir a qualquer momento.
+O agente gera um relatório diário com ROAS, gasto e compras por criativo. Chega no Telegram todo dia às 8h — o cron manda sozinho. Mas você pode pedir a qualquer momento.
 
-🎬 *Bruno, digita agora pro agente — aqui ou no Telegram:*
+🎬 *Bruno, digita pro agente:*
 
 **"Gera o relatório de Meta Ads de hoje"**
 
-*(Se o Bruno executar: agente puxa os dados via API do Meta Ads → processa → gera dashboard visual)*
+📎 `dados-demo/meta-ads-report-exemplo.html` — Dashboard completo ao vivo.
 
-📎 `dados-demo/meta-ads-report-exemplo.html` — Abrir o relatório visual ao vivo. Dashboard completo: performance por campanha, ROAS, CPA, distribuição de budget, alertas.
-
-Em produção: você configura a chave da sua conta Meta Ads. O sistema passa para modo produção automaticamente.
+Resultado desse nível: **visibilidade**. Você para de perder tempo abrindo painel. Os dados chegam até você.
 
 ⏸ *Aguarda "próximo"*
 
@@ -894,23 +892,93 @@ Em produção: você configura a chave da sua conta Meta Ads. O sistema passa pa
 
 📤 **Mensagem:**
 
-**Do relatório pra ação — análise de ângulos**
+**Nível 2 — Inteligência sobre os criativos**
 
-O relatório mostra os números. Mas o agente de marketing não para aí — ele analisa.
+Ter os dados é o começo. Mas dados sem contexto não servem pra nada. O próximo passo foi criar um MAPA de criativos: cada ad documentado com ângulo, formato, hook e performance.
+
+E um detalhe importante: janelas de análise corretas. O agente analisa em 24h, média móvel de 3 dias e 7 dias — não o acumulado da vida toda, que mascara tendências.
+
+Com isso, os primeiros padrões apareceram: ângulos que convertem, hooks que queimam rápido, formatos que performam melhor pra cada público.
+
+Resultado: **decisão por dados, não por intuição.**
+
+⏸ *Aguarda "próximo"*
+
+---
+
+📤 **Mensagem:**
+
+**Nível 3 — Metodologia de teste estruturada**
+
+Aqui a coisa fica séria. Não é mais "vamos testar um criativo novo" — é um framework A/B: uma variável por vez. Ou testa o hook, ou o ângulo, ou o formato. Nunca os três juntos.
+
+Regras de decisão documentadas: quando pausar, quando manter, quando escalar. Tudo no Cérebro.
+
+E o mais valioso: `learnings/` — aprendizados acumulados por ângulo, formato e hook. Consultáveis a qualquer momento. O agente lê antes de propor qualquer teste novo.
+
+E `descriptions/` — cada criativo tem seu briefing, hipótese e racional do teste. Nada é "achismo".
+
+Resultado: **cada real investido gera aprendizado reutilizável**, não apenas venda.
+
+⏸ *Aguarda "próximo"*
+
+---
+
+📤 **Mensagem:**
+
+**Nível 4 — Produção automatizada de criativos**
+
+Agora o agente não só analisa — ele **cria**. Skills que geram banners (stories e posts) a partir de copy e screenshot. Múltiplas variações de hook com bottom idêntico — pronto pra subir.
 
 🎬 *Bruno, digita pro agente:*
 
 **"Com base nos resultados de hoje, faz uma análise dos ângulos e padrões de performance. Quais hooks estão funcionando, quais estão cansando, e o que faz sentido testar agora?"**
 
-*(Se o Bruno executar: agente lê o relatório + `cerebro/areas/marketing/sub-areas/trafego-pago/learnings/resumo.md` + testes abertos → identifica padrões → sugere direção)*
+*(Agente lê relatório + learnings + testes abertos → identifica padrões → sugere direção)*
 
-Ele não chutou. Leu os dados, cruzou com os learnings anteriores, e entregou a análise com evidência.
+Ele não chutou. Leu os dados, cruzou com os learnings anteriores, e entregou a análise com evidência. A partir dessa análise, ele propõe o criativo, e com o OK roda a skill e entrega o PNG pronto.
 
-E a partir dessa análise, você pode pedir pro agente sugerir um criativo. Ele sugere, pergunta se pode gerar, e com o OK ele roda a skill `stack-ad-creator-pixel` e entrega o PNG pronto.
+E tem mais: novos ângulos descobertos por dados. O ângulo "Não-Técnico" surgiu de depoimentos analisados pelo agente — ninguém do time tinha pensado nele.
 
-Relatório → análise → criativo pronto. O ciclo completo rodou numa conversa. Sem abrir planilha, sem briefar designer, sem esperar.
+95 criativos documentados, gerados e testados com o mesmo sistema. O agente propõe, o humano aprova.
 
 📎 `slides/12-pipeline-criativos.html`
+
+⏸ *Aguarda "próximo"*
+
+---
+
+📤 **Mensagem:**
+
+**Nível 5 — Pipeline com inteligência de capacidade**
+
+Esse é o nível que separa automação de sistema inteligente. O agente calcula **slots disponíveis** por campanha antes de propor novos criativos. Não adianta gerar 10 criativos se só tem espaço pra 3.
+
+Regras de promoção claras: Teste → ASC → Foguete, com critérios objetivos — ROAS mínimo + spend mínimo. Se o criativo performou, sobe de nível. Se não, pausa.
+
+Funil monitorado dia a dia: Página → Checkout → Compra. Se cair, diagnóstico automático da causa.
+
+E o relatório agora vem 3 vezes ao dia — com recomendação por criativo e por campanha embutida no HTML.
+
+Resultado: **200 criativos sendo monitorados ao mesmo tempo.** O time só executa o que o sistema recomenda.
+
+⏸ *Aguarda "próximo"*
+
+---
+
+📤 **Mensagem:**
+
+**Nível 6 — Estado atual: 95% automatizado**
+
+Hoje, todo o ciclo opera em loop perpétuo: dados → hipótese → criativo → teste → learning → nova hipótese. O agente gerencia o trabalho intelectual — análise, decisão, briefing, geração. O time de tráfego só executa a parte operacional: ajuste de budget, upload e pausa dos ads.
+
+E toda decisão, aprendizado e criativo está versionado no git. Consultável, rastreável, auditável.
+
+**E o próximo passo?** A API do Meta permite automatizar o upload e a pausa. Mas a Meta tem cancelado contas que detectam uso agressivo de automação via API. Por isso decidimos manter o time pra essa camada operacional — por enquanto. Quando o risco diminuir, o ciclo fecha completamente.
+
+📎 `slides/10-marketing-wrapup.html`
+
+Esse é o fluxo de hoje. Loop perpétuo. 95% no agente. O time só opera o que a Meta ainda não permite automatizar.
 
 ⏸ *Aguarda "próximo"*
 
