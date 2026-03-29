@@ -1063,16 +1063,25 @@ Voltamos. Olha o recap — vocês já sabem montar um sistema multi-agente compl
 
 **Bot de suporte — o caso real do OpenClawzinho**
 
-Curso lançado. 2.000 vendas em dias. Mas junto vieram centenas de perguntas — todo dia, o dia todo. Instalação, configuração, erros, dúvidas de conceito.
+Curso lançado em Fevereiro de 2026.
 
+→ 7.000 alunos até final de Março.
+→ Mas junto vieram centenas de perguntas: Instalação, configuração, erros, dúvidas de conceito.
 3 problemas reais:
-- Perguntas repetidas chegando 24h/dia
-- Responder manualmente escala com o número de alunos — sem fim
-- Alunos precisam de orientação contextualizada, não de links
 
-A solução: não é chatbot genérico. É um agente que funciona como aluno avançado — conhece o material, entende contexto, responde com exemplos e aprende com cada conversa.
+1. Perguntas repetidas chegando 24h/dia
+2. Responder manualmente escala com o número de alunos — sem fim
+3. Alunos precisam de orientação contextualizada, não de links
 
-Resultado: **@OpenClawzinho** — agente no WhatsApp e Telegram. Montado em 2 horas.
+**Solução:**
+
+É um agente "personalizado" para cada aluno.
+
+→ Usa de base o próprio workspace da Amora + transcrições do curso
+→ Salva todas mensagens no Supabase — pra análise e transformação em dados
+→ Opera no WhatsApp (gateway padrão do OpenClaw) e no Telegram (Bot API)
+
+O agente foi montado em torno de 2-3 horas e reduziu nosso suporte dos alunos em **mais de 75% em menos de 30 dias**. Custo: ~R$ 1k/mês (assinatura OpenAI via OAuth).
 
 📎 `slides/13-bot-problema-ideia.html`
 
@@ -1082,15 +1091,14 @@ Resultado: **@OpenClawzinho** — agente no WhatsApp e Telegram. Montado em 2 ho
 
 📤 **Mensagem:**
 
-**Workspace separado + cérebro — o bot é desacoplado**
+**Arquitetura completa — como o OpenClawzinho funciona por dentro**
 
-Antes de qualquer coisa: o bot de suporte precisa do próprio workspace. Não compartilhado. Separado.
+→ **Workspace da Amora + transcrições** — a base de conhecimento real do bot. Ele consulta antes de cada resposta.
+→ **Supabase** — salva todas as conversas em tempo real. Cada pergunta + resposta = 1 row. Dados pra análise, relatórios e resumos.
+→ **OpenAI OAuth** — engine do bot. ~R$ 1k/mês pra 7.000 alunos ativos. 24/7.
+→ **WhatsApp** (gateway padrão do OpenClaw) + **Telegram** (Bot API) — mesma engine, dois canais.
 
-4 razões: contexto limpo, privacidade, performance e especialização.
-
-Mas repara no detalhe: o bot é desacoplado — ele vive no próprio workspace (SOUL.md, AGENTS.md, USER.md), mas o conhecimento dele vive no **cérebro**. A base de conhecimento e as dúvidas pendentes ficam em `cerebro/areas/atendimento/bot/`. O bot consulta — não possui.
-
-📎 `slides/14-bot-workspace-separado.html`
+📎 `slides/13-bot-fluxo-completo.html`
 
 ⏸ *Aguarda "próximo"*
 
@@ -1104,11 +1112,14 @@ Agente bom tem personalidade definida. Não é "responda dúvidas do curso" — 
 
 🎬 *Abrindo `cerebro/agentes/bot-suporte/SOUL.md` ao vivo — a personalidade do bot.*
 
-Repara: missão clara, tom definido, limites explícitos. E o mais importante — o padrão de resposta: contexto → resposta → fonte → próximo passo. Toda resposta segue esse formato.
+> 💡 **Prompt pro Bruno:**
+> *"OpenClawzinho, apresente-se para os alunos da imersão. Conte sua origem, sua missão, como você funciona e o que faz hoje, em linguagem simples, humana e inspiradora. Mostre que você nasceu de uma necessidade real de suporte e que hoje ajuda alunos usando memória, ferramentas e integrações ao redor. Não invente dados."*
+
+Repara na resposta: missão clara, tom definido, limites explícitos. E o mais importante — a instrução de sempre responder de forma simples, não-técnica, e entregar o prompt que o aluno precisa passar pro agente dele.
 
 🎬 *Abrindo `cerebro/agentes/bot-suporte/USER.md` — quem é o aluno típico.*
 
-O bot sabe com quem tá falando: nível técnico, dúvidas mais comuns, horários de pico. Isso muda completamente a qualidade da resposta.
+O bot sabe com quem tá falando: nível técnico, dúvidas mais comuns, horários de pico.
 
 ⏸ *Aguarda "próximo"*
 
@@ -1116,31 +1127,22 @@ O bot sabe com quem tá falando: nível técnico, dúvidas mais comuns, horário
 
 📤 **Mensagem:**
 
-**Autonomia — o que faz sozinho e o que escala pro Bruno**
+**Skills — o que o bot sabe fazer sob demanda**
 
-O AGENTS.md define com precisão: o que o bot pode fazer sozinho, o que escala. Sem isso, o bot pode prometer coisas que você não entrega ou dar resposta errada com confiança.
+O OpenClawzinho opera com skills da área de atendimento. Cada uma é um documento em linguagem natural que define quando executar, como executar e o que entregar.
 
-🎬 *Abrindo `cerebro/agentes/bot-suporte/AGENTS.md` ao vivo.*
+📎 `cerebro/areas/atendimento/skills/_index.md`
+📎 `cerebro/areas/atendimento/skills/consulta-base-conhecimento/SKILL.md`
 
-Regra de ouro: na dúvida, responde o que sabe e indica o canal oficial. Nunca inventa, nunca finge saber.
+| Skill | O que faz | Status |
+|-------|-----------|--------|
+| responder-cliente | Responde cliente seguindo tom e padrão definido | ✅ Ativo |
+| escalar-duvida | Escala dúvida que não sabe responder pro responsável | ✅ Ativo |
+| consulta-base-conhecimento | Busca no workspace da Amora (KB + transcrições) antes de responder | ✅ Ativo |
+| registro-duvida-pendente | Registra dúvida que o bot não sabe + escala pro Bruno | ✅ Ativo |
+| relatorio-suporte | Gera resumo diário: volume, perguntas frequentes, escalações, taxa de resolução | ✅ Ativo |
 
-📎 `slides/15-bot-autonomia.html`
-
-⏸ *Aguarda "próximo"*
-
----
-
-📤 **Mensagem:**
-
-**O loop de consulta — por que esse bot fica mais inteligente com o tempo**
-
-Aqui tá o segredo. Antes de responder qualquer aluno, o bot consulta a base de conhecimento:
-
-**Base de conhecimento** (`cerebro/areas/atendimento/bot/base-conhecimento.md`) — tudo que o bot já sabe: FAQ + respostas validadas pelo Bruno. Cresce automaticamente via cron.
-
-Se não tem a resposta na base → responde o que sabe, marca @Bruno, registra em `duvidas-pendentes.md`. Quando o Bruno responder, o cron consolida na base.
-
-📎 `slides/16-bot-loop-3-camadas.html`
+A hierarquia de consulta: workspace da Amora (KB) > transcrições do curso > conhecimento geral do modelo. Se não encontrou em nenhum → executa a skill `registro-duvida-pendente`.
 
 ⏸ *Aguarda "próximo"*
 
@@ -1148,40 +1150,17 @@ Se não tem a resposta na base → responde o que sabe, marca @Bruno, registra e
 
 📤 **Mensagem:**
 
-**O cron que alimenta a base de conhecimento**
+**Persistência — como as mensagens viram dados**
 
-A base não é manual — ela cresce automaticamente. Todo dia às 18h, o cron lê `duvidas-pendentes.md`, pega as que o Bruno já respondeu, formata no padrão P/R e adiciona em `base-conhecimento.md`. Tudo dentro do cérebro — sem depender de nenhuma ferramenta externa.
+Toda interação é salva. Mas isso não é skill do agente — é infraestrutura ao redor dele.
 
-Dois arquivos. Um cron. A base cresce sozinha.
+- **Integração do Telegram** — recebe as mensagens do canal
+- **Listener** — captura e transforma em JSON estruturado
+- **Script** (`save-telegram-to-supabase.sh`) — grava no Supabase
 
-O efeito composto: no lançamento, o bot sabia ~20 respostas. Depois de 30 dias, 80% das perguntas respondidas sozinho. Em 90 dias, 95%.
+O agente responde. Os scripts ao redor salvam e organizam.
 
-📎 `slides/17-bot-cron-kb.html`
-
-⏸ *Aguarda "próximo"*
-
----
-
-📤 **Mensagem:**
-
-**Demo ao vivo — grupo no Telegram**
-
-Agora a gente testa. Criamos um grupo com 3: eu, o Bruno e o OpenClawzinho.
-
-🎬 *No Telegram — criando grupo e adicionando o bot.*
-
-**Bruno, manda uma pergunta que ele sabe responder.**
-
-> 💡 **Sugestões de perguntas que estão na base de conhecimento:**
-> - *"Como conecto o OpenClaw ao Telegram?"* — tá no FAQ, seção Uso da Plataforma
-> - *"Precisa saber programar para usar o OpenClaw?"* — tá no FAQ, seção Primeiros Passos
-> - *"O que é uma skill?"* — tá no FAQ, seção Uso da Plataforma
-> - *"Meu agente parou de responder, o que faço?"* — tá no FAQ, seção Técnico
-> - *"Tem garantia?"* — tá no FAQ, seção Planos e Pagamento
-
-*(bot responde seguindo o padrão: contexto → resposta → fonte → próximo passo)*
-
-Repara: ele não jogou um link. Contextualizou, respondeu direto, apontou a seção e deu o próximo passo.
+📎 `slides/13b-bot-persistencia.html`
 
 ⏸ *Aguarda "próximo"*
 
@@ -1189,26 +1168,19 @@ Repara: ele não jogou um link. Contextualizou, respondeu direto, apontou a seç
 
 📤 **Mensagem:**
 
-**Agora manda uma que ele NÃO sabe:**
+**Rotinas — o que roda sozinho no automático**
 
-> 💡 **Sugestões de perguntas que NÃO estão na base:**
-> - *"Vocês vão ter desconto pra grupos de empresa?"* — não tem na base, questão comercial
-> - *"Consigo rodar o OpenClaw num Raspberry Pi?"* — não tem na base, caso técnico específico
-> - *"O Enterprise inclui migração dos meus dados?"* — não tem na base, questão comercial
-> - *"Meu pagamento foi debitado duas vezes, como resolvo?"* — não tem na base, questão financeira que escala pro Bruno
-> - *"Dá pra integrar com o Notion?"* — não tem na base, feature request
+O bot tem 2 crons que rodam todo dia sem intervenção:
 
-🎬 *Bruno manda a pergunta escolhida.*
+📎 `cerebro/areas/atendimento/rotinas/_index.md`
+📎 `cerebro/areas/atendimento/rotinas/consolidacao-kb-diaria.md`
 
-*(bot responde que vai verificar → marca @Bruno no grupo → registra em `duvidas-pendentes.md`)*
+| Rotina | Horário | O que faz |
+|--------|---------|-----------|
+| resumo-diario-suporte | 22h | Gera relatório do dia e envia pro Bruno via Telegram |
+| consolidacao-kb-diaria | 23h | Analisa perguntas frequentes no Supabase e alimenta a base de conhecimento |
 
-Olha o que aconteceu: ele não inventou. Respondeu o que sabia, marcou o Bruno pra responder, e registrou a dúvida no cérebro.
-
-🎬 *Bruno, abre o GitHub no repositório do cérebro e vai em `cerebro/areas/atendimento/bot/duvidas-pendentes.md`. Mostra como o arquivo mudou — tá aqui a dúvida que acabou de chegar. Status: pendente.*
-
-A plateia vê em tempo real: o bot registrou a dúvida direto no cérebro, via GitHub. Não é mágica — é um commit.
-
-Quando o Bruno responder, o cron das 18h consolida na `base-conhecimento.md`. Próxima vez que alguém perguntar a mesma coisa — o bot já vai saber.
+O efeito composto: quanto mais alunos perguntam, mais dados no Supabase, mais inteligente o bot fica, menos escalações pro Bruno. Em menos de 30 dias, -75% de suporte manual.
 
 ⏸ *Aguarda "próximo"*
 
@@ -1216,15 +1188,30 @@ Quando o Bruno responder, o cron das 18h consolida na `base-conhecimento.md`. Pr
 
 📤 **Mensagem:**
 
-**Custo real e checklist de implementação**
+**Demo ao vivo — OpenClawzinho na prática**
 
-1 assinatura do Claude. 1.500 a 2.000 mensagens por dia. 24/7. Custo incremental: zero.
+Agora vocês vão ver o bot funcionando de verdade. Vou abrir as duas plataformas onde ele opera.
 
-Comparativo: freelancer de suporte custa R$ 2.000–4.000/mês, trabalha em horário comercial, é inconsistente entre turnos. O bot? Mesma resposta sempre, aprende sozinho, escala pra zero custo marginal.
+🎬 *Bruno abre o WhatsApp — mostra o histórico do OpenClawzinho.*
 
-2 a 3 horas pra montar do zero. Mais 2 horas de ajuste depois do primeiro dia real.
+O OpenClawzinho nasceu aqui. No WhatsApp, via gateway padrão do OpenClaw. Foi onde ele atendeu os primeiros 7.000 alunos. Vocês podem ver o histórico de conversas reais — perguntas, respostas, escalações.
 
-📎 `slides/18-bot-custo-checklist.html`
+🎬 *Bruno abre o Telegram — mostra o bot funcionando hoje.*
+
+Depois migramos pro Telegram. Mesma engine, mesma lógica, mesma personalidade. A diferença: Telegram tem Bot API nativa, grupos com tópicos, e é mais leve pra manter.
+
+A migração foi simples — o agente é o mesmo. O que mudou foi só o canal de entrada. O SOUL.md, as skills, as rotinas — tudo igual. Isso é o poder de ter a lógica separada da interface.
+
+**Bruno, manda uma pergunta ao vivo pro bot.**
+
+> 💡 **Sugestões:**
+> - *"Como conecto o OpenClaw ao Telegram?"*
+> - *"Precisa saber programar para usar o OpenClaw?"*
+> - *"O que é uma skill?"*
+
+🎬 *Bot responde ao vivo. Plateia vê a resposta em tempo real.*
+
+Custo de tudo isso: ~R$ 1k/mês (assinatura OpenAI via OAuth). Pra 7.000 alunos ativos, 24/7. Setup: 2-3 horas.
 
 ⏸ *Aguarda "próximo"*
 
@@ -1238,21 +1225,20 @@ Comparativo: freelancer de suporte custa R$ 2.000–4.000/mês, trabalha em hor�
 
 **Como começar na sua empresa**
 
-Em uma semana de trabalho, você consegue montar esse sistema inteiro. Os passos são:
+São duas etapas. A primeira é só da diretoria — montar a fundação.
+
+**Etapa 1 — Diretoria (primeira semana)**
 
 1. **Criar o repositório (cérebro)** — estrutura de pastas: áreas, agentes, skills
-2. **Alimentar com contexto** — esse é o passo mais importante e o mais demorado. O agente precisa saber sobre sua empresa pra trabalhar bem
-3. **Mapear área por área** — olha o trabalho que tá sendo feito, entende os processos, e vai abstraindo em tarefas e habilidades
+2. **Alimentar com contexto** — o passo mais importante e mais demorado. Conecta via API nas ferramentas que você já usa (Notion, Google Drive, exporta em Markdown)
+3. **Mapear as áreas** — as que fazem sentido pra diretoria no primeiro momento. Entende os processos e vai abstraindo em tarefas e habilidades
 4. **Criar as primeiras skills** — começa pelas mais simples, valida, e vai evoluindo
 5. **Agendar crons** — o que deve rodar sozinho, roda sozinho
+
+**Etapa 2 — Escalar pro time**
+
 6. **Criar agentes especializados** — quando fizer sentido, separa workspaces com escopo claro
-7. **Onboarding do time** — não adianta montar o sistema perfeito se ninguém sabe usar. Configura o agente pra se apresentar (regra no SOUL.md que lê o _index.md das skills), coloca no grupo, e deixa o próprio agente ensinar o time a usá-lo
-
-A maior dificuldade? **Alimentar o contexto.** Mas você não precisa digitar tudo na mão.
-
-Conecta via API nas ferramentas onde você já coloca esse contexto. Notion, por exemplo — dá pra conectar via API ou exportar tudo em Markdown. Google Drive também — API nativa. O agente consegue ler e organizar.
-
-O mais importante é: começa alimentando, e aos poucos você vai analisando área por área, o trabalho que está sendo feito, e abstraindo isso em tarefas, habilidades, automações.
+7. **Onboarding do time** — configura o agente pra se apresentar (regra no SOUL.md que lê o _index.md das skills), coloca no grupo, e deixa o próprio agente ensinar o time a usá-lo
 
 📎 `slides/19-roadmap-30dias.html`
 
