@@ -1,7 +1,8 @@
 # Teste — Hook Híbrido: Número Concreto + Ângulo Não-Técnico (A07)
 
-**Status:** 🟡 Aguardando criação do criativo
+**Status:** 🟠 Criativo pronto — aguardando upload no Meta Ads
 **Data de criação:** 26/03/2026
+**Atualizado em:** 30/03/2026
 
 ---
 

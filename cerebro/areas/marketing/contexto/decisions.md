@@ -38,4 +38,11 @@
 
 ---
 
-_Atualizado: 29/03/2026_
+### 30/03 — Status das pendências abertas (consolidação diária)
+
+- **A06:** Prazo de monitoramento encerrou em 29/03. Dados de performance 26/03–28/03 não disponíveis no sistema (sem token Meta Ads em modo demo). Ação pendente: Lucas/Patrícia devem fornecer dados de ROAS do período para formalizar decisão escala/pausa.
+- **Campanha openClaw-conv-venda:** Prazo de pausa de 3 dias encerrou em 28/03. Decisão sobre reativação ou escolha de novo criativo aguardando confirmação de Felipe Santos.
+- **A07:** Banners gerados e documentados (`A07-hibrido-estatico.md`). Aguardando upload por Lucas/Patrícia no Meta Ads. Budget aprovado: R$ 200/dia.
+- **Status:** 🔍 Itens acima requerem ação humana — sem novas notas `memory/` para processar hoje.
+
+_Atualizado: 30/03/2026_
