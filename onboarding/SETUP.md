@@ -9,7 +9,7 @@
 
 ## Para o Agente
 
-Você vai guiar o usuário por 6 fases para transformar este repositório — que hoje tem dados de uma empresa fictícia — no cérebro real da empresa dele.
+Você vai guiar o usuário por 5 fases para transformar este repositório — que hoje tem dados de uma empresa fictícia — no cérebro real da empresa dele.
 
 **Regras:**
 - Faça uma pergunta de cada vez. Não dispare listas.
@@ -18,6 +18,18 @@ Você vai guiar o usuário por 6 fases para transformar este repositório — qu
 - Ao final de cada fase, confirme antes de avançar.
 
 **Tempo estimado:** 60–90 minutos.
+
+---
+
+## O que vamos criar
+
+Neste setup, você vai configurar o **Assistente de Diretoria** — o agente principal da empresa. Ele tem acesso a tudo no cérebro, conhece a operação inteira e pode ser acionado por qualquer pessoa do time.
+
+> **Por que "de diretoria"?** Ele age como um braço direito operacional com permissão total — lê e escreve em qualquer área, conhece métricas, equipe, decisões e executa skills em qualquer parte da empresa.
+
+Um detalhe importante: você provavelmente vai querer um **agente pessoal** também — com sua personalidade, suas preferências, sua memória particular. Esse agente pessoal **não vai para o GitHub.** Ele fica na sua configuração local, privado. O que vamos documentar e versionar aqui é o Assistente de Diretoria, que pertence à empresa.
+
+O agente pessoal a gente configura em outro momento. Vamos focar no que vai resolver a operação primeiro.
 
 ---
 
@@ -337,25 +349,7 @@ Cron: `0 8 * * 1`
 
 ---
 
-## Fase 5 — Segundo Agente (opcional, 10 min)
-
-> **Pergunte:**
-> "Tem mais alguém no time que vai usar o agente — sócio, funcionário, colaborador?"
-
-**Se NÃO:** avance para a Fase 6.
-
-**Se SIM:**
-
-1. "Quem vai ter acesso? Nome e cargo."
-2. "O agente deles deve ter acesso a tudo ou só a uma área específica?"
-
-Crie `cerebro/agentes/[nome]/SOUL.md` baseado em `cerebro/agentes/assistente/SOUL.md`, adaptando nome, função, escopo de acesso e tom.
-
-Atualize `cerebro/agentes/[nome]/AGENTS.md` com o escopo restrito às pastas permitidas.
-
----
-
-## Fase 6 — Validação e Publicação (10 min)
+## Fase 5 — Validação e Publicação (10 min)
 
 ### Checklist
 
@@ -406,9 +400,13 @@ git push origin main
 
 **Semana 1:** Testar o heartbeat, executar a primeira skill manualmente, ajustar contexto conforme necessário.
 
-**Semana 2–4:** Adicionar skills para outras tarefas, configurar a segunda área, trazer mais pessoas do time.
+**Semana 2–4:** Adicionar skills para outras tarefas, configurar uma segunda área, trazer mais pessoas do time.
 
 **Mês 2+:** Skills com integrações externas (CRM, planilha, APIs), relatórios automáticos, expandir para todas as áreas.
+
+---
+
+**Agentes adicionais:** quando o Assistente de Diretoria estiver rodando bem, você pode criar agentes com escopos específicos para outras pessoas do time — um agente de vendas, um de marketing, um agente pessoal. Cada um com suas permissões e personalidade. Isso vem depois que a base estiver sólida.
 
 ---
 
